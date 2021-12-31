@@ -22,4 +22,4 @@ export GENNY_SERVICE_USERNAME=service
 export GENNY_KEYCLOAK_URL=https://keycloak.gada.io
 export GENNY_API_URL=http://internmatch.genny.life:8280
 export GENNY_SHOW_VALUES=true; 
-./target/rulesqkogito-9.10.0-runner
+./target/rulesqkogito-9.11.0-runner
