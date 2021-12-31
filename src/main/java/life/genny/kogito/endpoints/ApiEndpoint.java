@@ -1,0 +1,69 @@
+package life.genny.kogito.endpoints;
+
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.event.Observes;
+import javax.transaction.Transactional;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.Response;
+
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+import org.jboss.logging.Logger;
+
+import io.quarkus.runtime.ShutdownEvent;
+import io.quarkus.runtime.StartupEvent;
+import io.vertx.core.http.HttpServerRequest;
+
+/**
+ * ApiEndpoint - Endpoints providing Rules API
+ */
+
+@Path("/kogito")
+@ApplicationScoped
+public class ApiEndpoint {
+
+	private static final Logger log = Logger.getLogger(ApiEndpoint.class);
+
+	@ConfigProperty(name = "genny.show.values", defaultValue = "false")
+	Boolean showValues;
+
+	@ConfigProperty(name = "genny.keycloak.url", defaultValue = "https://keycloak.gada.io")
+	String baseKeycloakUrl;
+
+	@ConfigProperty(name = "project.version", defaultValue = "unknown")
+	String version;
+	
+	@ConfigProperty(name = "kafka.bootstrap.servers", defaultValue = "kafka:9092")
+	String gennyKafkaUrl;
+
+
+	@Context
+	HttpServerRequest request;
+
+	/**
+	* A GET request for the running version
+	*
+	* @return 	version data
+	 */
+	@GET
+	@Path("/api/version")
+	public Response version() {
+		return Response.ok().entity("version: \""+version+"\"").build();
+	}
+
+	@Transactional
+	void onStart(@Observes StartupEvent ev) {
+		log.info("Api Endpoint starting");
+		if (showValues) {
+			log.info("Version="+version);
+			log.info("GENNY_KAFKA_URL="+gennyKafkaUrl);
+			log.info("GENNY_KEYCLOAK_URL="+baseKeycloakUrl);
+		}
+	}
+
+	@Transactional
+	void onShutdown(@Observes ShutdownEvent ev) {
+		log.info("Api Endpoint Shutting down");
+	}
+}
