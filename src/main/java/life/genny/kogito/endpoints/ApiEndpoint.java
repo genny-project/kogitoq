@@ -35,6 +35,9 @@ public class ApiEndpoint {
 
 	@ConfigProperty(name = "genny.keycloak.url", defaultValue = "https://keycloak.gada.io")
 	String baseKeycloakUrl;
+	
+	@ConfigProperty(name = "quarkus.infinispan-client.server-list", defaultValue = "infinispan")
+	String infinispanUrl;
 
 	@ConfigProperty(name = "project.version", defaultValue = "unknown")
 	String version;
@@ -64,6 +67,7 @@ public class ApiEndpoint {
 			log.info("Version="+version);
 			log.info("GENNY_KAFKA_URL="+gennyKafkaUrl);
 			log.info("GENNY_KEYCLOAK_URL="+baseKeycloakUrl);
+			log.info("GENNY_INFINISPAN_URL="+infinispanUrl);
 		}
 	}
 
