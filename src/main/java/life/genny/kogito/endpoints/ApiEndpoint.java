@@ -39,11 +39,21 @@ public class ApiEndpoint {
 	@ConfigProperty(name = "quarkus.infinispan-client.server-list", defaultValue = "infinispan")
 	String infinispanUrl;
 
+	@ConfigProperty(name = "kogito.jobs-service.url", defaultValue = "jobs-service")
+	String jobsserviceUrl;
+
+	@ConfigProperty(name = "kogito.service.url", defaultValue = "jobs-service")
+	String serviceUrl;
+	
+	@ConfigProperty(name = "kogito.dataindex.http.url", defaultValue = "data-index")
+	String dataIndexHttpUrl;
+
 	@ConfigProperty(name = "project.version", defaultValue = "unknown")
 	String version;
 	
 	@ConfigProperty(name = "kafka.bootstrap.servers", defaultValue = "kafka:9092")
 	String gennyKafkaUrl;
+
 
 
 	@Context
@@ -68,6 +78,9 @@ public class ApiEndpoint {
 			log.info("GENNY_KAFKA_URL="+gennyKafkaUrl);
 			log.info("GENNY_KEYCLOAK_URL="+baseKeycloakUrl);
 			log.info("GENNY_INFINISPAN_URL="+infinispanUrl);
+			log.info("GENNY_KOGITO_JOBSSERVICE_URL="+jobsserviceUrl);
+			log.info("GENNY_KOGITO_SERVICE_URL="+serviceUrl);
+			log.info("GENNY_KOGITO_DATAINDEX_HTTP_URL="+dataIndexHttpUrl);
 		}
 	}
 
