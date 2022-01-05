@@ -18,4 +18,4 @@ echo $GENNY_KOGITO_DATAINDEX_HTTP_URL
 echo $GENNY_KOGITO_DATAINDEX_WS_URL
 echo $GENNY_KOGITO_JOBSERVICE_URL
 echo $GENNY_KOGITO_SERVICE_URL
-./target/kogitoq-9.11.0-runner
+./target/kogitoq-9.11.0-runner  -Dquarkus.http.port=8580
