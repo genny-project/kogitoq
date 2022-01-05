@@ -14,6 +14,7 @@
     </licenses>	
 	
 	<properties>
+	  <genny.version>${project.version}</genny.version>
 		<compiler-plugin.version>3.8.1</compiler-plugin.version>
 		<maven.compiler.release>11</maven.compiler.release>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -36,6 +37,17 @@
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
+	  <dependency>
+      <groupId>life.genny</groupId>
+      <artifactId>qwandaq</artifactId>
+      <version>${genny.version}</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>xml-apis</artifactId>
+          <groupId>xml-apis</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
                <dependency>
                         <groupId>com.google.protobuf</groupId>
                         <artifactId>patched-protobuf-java</artifactId>
