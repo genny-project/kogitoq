@@ -4,26 +4,51 @@
 	<groupId>life.genny</groupId>
 	<artifactId>kogitoq</artifactId>
 	<version>9.11.0</version>
-	
-    <licenses>
-        <license>
-            <name>Apache License, Version 2.0</name>
-            <distribution>repo</distribution>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
-        </license>
-    </licenses>	
-	
+
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<distribution>repo</distribution>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+		</license>
+	</licenses>
+
+  <name>KogitoQ</name>
+  <description>Genny Project RulesEngine</description>
+
+  <url>https://www.gada.io</url>
+  <inceptionYear>2022</inceptionYear>
+  <organization>
+    <name>GADA Technology</name>
+    <url>http://www.gada.io/</url>
+  </organization>
+
+    <scm>
+    <connection>scm:git:https://github.com/genny-project/kogitoq.git</connection>
+    <developerConnection>scm:git:git@github.com:genny-project/kogitoq.git</developerConnection>
+    <url>https://github.com/genny-project/kogitoq</url>
+  </scm>
+
+  <developers>
+    <developer>
+      <name>All developers are listed in the GADA Technology site</name>
+      <url>https://github.com/genny-project/developers</url>
+    </developer>
+  </developers>
+
 	<properties>
-	  <genny.version>${project.version}</genny.version>
+		<genny.version>${project.version}</genny.version>
+		<kogito.version>1.14.1.Final</kogito.version>
 		<compiler-plugin.version>3.8.1</compiler-plugin.version>
 		<maven.compiler.release>11</maven.compiler.release>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
-		<quarkus-plugin.version>2.5.4.Final</quarkus-plugin.version>
-		<quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
+		<quarkus-plugin.version>2.5.4.Final</quarkus-plugin.version>		
 		<quarkus.platform.version>2.5.4.Final</quarkus.platform.version>
+		<quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
 		<surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
+		<testcontainers.version>1.16.2</testcontainers.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -37,24 +62,24 @@
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
-	  <dependency>
-      <groupId>life.genny</groupId>
-      <artifactId>qwandaq</artifactId>
-      <version>${genny.version}</version>
-      <exclusions>
-        <exclusion>
-          <artifactId>xml-apis</artifactId>
-          <groupId>xml-apis</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-               <dependency>
-                        <groupId>com.google.protobuf</groupId>
-                        <artifactId>patched-protobuf-java</artifactId>
-                        <version>1.0</version>
-                        <scope>system</scope>
-                        <systemPath>${project.basedir}/patchs/map-field-patch.jar</systemPath>
-                </dependency>
+		<dependency>
+			<groupId>life.genny</groupId>
+			<artifactId>qwandaq</artifactId>
+			<version>${genny.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>xml-apis</artifactId>
+					<groupId>xml-apis</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.google.protobuf</groupId>
+			<artifactId>patched-protobuf-java</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/patchs/map-field-patch.jar</systemPath>
+		</dependency>
 		<dependency>
 			<groupId>io.quarkus</groupId>
 			<artifactId>quarkus-arc</artifactId>
@@ -62,8 +87,8 @@
 		<dependency>
 			<groupId>org.kie.kogito</groupId>
 			<artifactId>kogito-legacy-api</artifactId>
-			<version>1.14.1.Final</version>
-      		</dependency>
+			<version>${kogito.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>io.quarkus</groupId>
 			<artifactId>quarkus-resteasy</artifactId>
@@ -85,7 +110,7 @@
 		<dependency>
 			<groupId>org.kie.kogito</groupId>
 			<artifactId>kogito-quarkus</artifactId>
-			<version>1.14.1.Final</version>
+			<version>${kogito.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>io.quarkus</groupId>
@@ -94,7 +119,7 @@
 		<dependency>
 			<groupId>org.kie.kogito</groupId>
 			<artifactId>kogito-addons-quarkus-persistence-infinispan</artifactId>
-			<version>1.14.1.Final</version>
+			<version>${kogito.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>io.quarkus</groupId>
@@ -112,24 +137,54 @@
 		<dependency>
 			<groupId>org.kie.kogito</groupId>
 			<artifactId>kogito-addons-quarkus-events-process</artifactId>
-			<version>1.14.1.Final</version>
+			<version>${kogito.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.kie.kogito</groupId>
 			<artifactId>kogito-addons-quarkus-process-management</artifactId>
-			<version>1.14.1.Final</version>
+			<version>${kogito.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.kie.kogito</groupId>
 			<artifactId>kogito-addons-quarkus-jobs-management</artifactId>
-			<version>1.14.1.Final</version>
+			<version>${kogito.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.kie.kogito</groupId>
 			<artifactId>kogito-addons-quarkus-process-svg</artifactId>
-			<version>1.14.1.Final</version>
+			<version>${kogito.version}</version>
 		</dependency>
-
+		<dependency>
+			<groupId>org.kie.kogito</groupId>
+			<artifactId>kogito-addons-quarkus-messaging</artifactId>
+			<version>${kogito.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.kie.kogito</groupId>
+			<artifactId>drools-decisiontables</artifactId>
+			<version>${kogito.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.kie.kogito</groupId>
+			<artifactId>kogito-addons-quarkus-monitoring-prometheus</artifactId>
+			<version>${kogito.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.kie.kogito</groupId>
+			<artifactId>kogito-quarkus-test-utils</artifactId>
+			<version>${kogito.version}</version>
+			<scope>test</scope>
+		</dependency>
+		    <dependency>
+      <groupId>org.testcontainers</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>${testcontainers.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-qute</artifactId>
+    </dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -167,49 +222,49 @@
 					</systemPropertyVariables>
 				</configuration>
 			</plugin>
-			     <plugin>
-        <groupId>pl.project13.maven</groupId>
-        <artifactId>git-commit-id-plugin</artifactId>
-        <version>2.2.3</version>
-        <executions>
-          <execution>
-            <id>git-info</id>
-            <goals>
-              <goal>revision</goal>
-            </goals>
-            <configuration>
-              <generateGitPropertiesFile>true</generateGitPropertiesFile>
-              <generateGitPropertiesFilename>target/classes/${project.name}-git.properties</generateGitPropertiesFilename>
-              <dotGitDirectory>${project.basedir}/../.git</dotGitDirectory>
-              <prefix>git</prefix>
-              <dateFormat>yyyy.MM.dd '@' HH:mm:ss z</dateFormat>
-              <dateFormatTimeZone>${user.timezone}</dateFormatTimeZone>
-              <verbose>false</verbose>
-              <generateGitPropertiesFile>true</generateGitPropertiesFile>
-              <generateGitPropertiesFilename>src/main/resources/${project.name}-git.properties</generateGitPropertiesFilename>
-              <format>properties</format>
-              <skipPoms>true</skipPoms>
-              <injectAllReactorProjects>false</injectAllReactorProjects>
-              <failOnNoGitDirectory>true</failOnNoGitDirectory>
-              <failOnUnableToExtractRepoInfo>true</failOnUnableToExtractRepoInfo>
-              <skip>false</skip>
-              <runOnlyOnce>false</runOnlyOnce>
-              <excludeProperties></excludeProperties>
-              <includeOnlyProperties></includeOnlyProperties>
-              <useNativeGit>false</useNativeGit>
-              <abbrevLength>7</abbrevLength>
-              <gitDescribe>
-                <skip>false</skip>
-                <always>false</always>
-                <abbrev>7</abbrev>
-                <dirty>-dirty</dirty>
-                <match>*</match>
-                <forceLongFormat>false</forceLongFormat>
-              </gitDescribe>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
+			<plugin>
+				<groupId>pl.project13.maven</groupId>
+				<artifactId>git-commit-id-plugin</artifactId>
+				<version>2.2.3</version>
+				<executions>
+					<execution>
+						<id>git-info</id>
+						<goals>
+							<goal>revision</goal>
+						</goals>
+						<configuration>
+							<generateGitPropertiesFile>true</generateGitPropertiesFile>
+							<generateGitPropertiesFilename>target/classes/${project.name}-git.properties</generateGitPropertiesFilename>
+							<dotGitDirectory>${project.basedir}/../.git</dotGitDirectory>
+							<prefix>git</prefix>
+							<dateFormat>yyyy.MM.dd '@' HH:mm:ss z</dateFormat>
+							<dateFormatTimeZone>${user.timezone}</dateFormatTimeZone>
+							<verbose>false</verbose>
+							<generateGitPropertiesFile>true</generateGitPropertiesFile>
+							<generateGitPropertiesFilename>src/main/resources/${project.name}-git.properties</generateGitPropertiesFilename>
+							<format>properties</format>
+							<skipPoms>true</skipPoms>
+							<injectAllReactorProjects>false</injectAllReactorProjects>
+							<failOnNoGitDirectory>true</failOnNoGitDirectory>
+							<failOnUnableToExtractRepoInfo>true</failOnUnableToExtractRepoInfo>
+							<skip>false</skip>
+							<runOnlyOnce>false</runOnlyOnce>
+							<excludeProperties></excludeProperties>
+							<includeOnlyProperties></includeOnlyProperties>
+							<useNativeGit>false</useNativeGit>
+							<abbrevLength>7</abbrevLength>
+							<gitDescribe>
+								<skip>false</skip>
+								<always>false</always>
+								<abbrev>7</abbrev>
+								<dirty>-dirty</dirty>
+								<match>*</match>
+								<forceLongFormat>false</forceLongFormat>
+							</gitDescribe>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 	<profiles>
