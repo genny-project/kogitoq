@@ -1,6 +1,6 @@
 #!/bin/bash
 name=$1
-curl -H "Content-Type: application/json" -H "Accept: application/json" -X POST http://alyson.genny.life:8580/hiring -d @- << EOF
+curl -H "Content-Type: application/json" -H "Accept: application/json" -X POST http://localhost:8580/hiring -d @- << EOF
 {   
     "candidate": {
         "name": "${name}",
