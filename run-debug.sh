@@ -5,8 +5,9 @@ export GENNY_SERVICE_USERNAME=service
 export GENNY_KEYCLOAK_URL=https://keycloak.gada.io
 export GENNY_API_URL=http://internmatch.genny.life:8280
 export GENNY_KAFKA_URL=alyson.genny.life:9092
-export GENNY_CLIENT_ID=alyson
+export GENNY_CLIENT_ID=kogito-console-quarkus
 export GENNY_REALM=internmatch
+export GENNY_KOGITO_SERVICE_URL=http://alyson2.genny.life:8580
 echo $GENNY_KEYCLOAK_URL
 echo $GENNY_SERVICE_USERNAME
 echo $GENNY_SERVICE_PASSWORD
