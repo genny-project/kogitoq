@@ -1,4 +1,7 @@
 #!/bin/bash
+PROJECT_VERSION=$(cd ../ && mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+
+echo "Project version: ${PROJECT_VERSION}"
 project=`echo "${PWD##*/}" | tr '[:upper:]' '[:lower:]'`
 project=kogitoq
 file="src/main/resources/${project}-git.properties"
